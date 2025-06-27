@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Money Blessings - HD Cover Design (Natural Photo)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .book-cover {
+            width: 1000px;
+            height: 1500px;
+            position: relative;
+            background: linear-gradient(135deg, #2d1810 0%, #1a0f08 50%, #0d0704 100%);
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            overflow: hidden;
+            border: 3px solid #8b6914;
+            transform: scale(0.4);
+            transform-origin: center;
+        }
+        
+        .golden-frame {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+            border: 5px solid;
+            border-image: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700, #b8860b) 1;
+            border-radius: 8px;
+        }
+        
+        .ornamental-border {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 4px;
+        }
+        
+        .title-section {
+            position: absolute;
+            top: 80px;
+            left: 60px;
+            right: 60px;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: #e6d690;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .lineage-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+        }
+        
+        .maria-photo {
+            position: absolute;
+            top: 420px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 6px solid #ffd700;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.4);
+            background: #2d1810;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffd700;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+            /* Убираем золотистый фильтр - фото остается в естественных цветах */
+            filter: none !important;
+        }
+        
+        .maria-photo:hover {
+            transform: translateX(-50%) scale(1.02);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+        }
+        
+        .photo-placeholder {
+            opacity: 0.7;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.4;
+            pointer-events: none;
+        }
+        
+        .bottom-section {
+            position: absolute;
+            bottom: 120px;
+            left: 60px;
+            right: 60px;
+            text-align: center;
+        }
+        
+        .activation-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #e6d690;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .author-name {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: #ffd700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+        
+        .mystical-symbols {
+            position: absolute;
+            opacity: 0.1;
+            color: #ffd700;
+            font-size: 120px;
+        }
+        
+        .symbol-1 {
+            top: 40px;
+            left: 40px;
+            transform: rotate(-15deg);
+        }
+        
+        .symbol-2 {
+            top: 40px;
+            right: 40px;
+            transform: rotate(15deg);
+        }
+        
+        .symbol-3 {
+            bottom: 40px;
+            left: 40px;
+            transform: rotate(15deg);
+        }
+        
+        .symbol-4 {
+            bottom: 40px;
+            right: 40px;
+            transform: rotate(-15deg);
+        }
+        
+        .golden-accent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 650px;
+            height: 650px;
+            border: 2px solid rgba(255, 215, 0, 0.15);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .inner-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            border: 2px solid #ffd700;
+        }
+        
+        .controls h3 {
+            margin: 0 0 15px 0;
+            color: #ffd700;
+            font-size: 16px;
+        }
+        
+        .controls button {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-weight: bold;
+            width: 100%;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .controls button:hover {
+            background: linear-gradient(135deg, #ffed4e, #ffd700);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        .controls button:disabled {
+            background: #666;
+            color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 12px;
+            color: #ffd700;
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            font-size: 13px;
+            line-height: 1.5;
+            border: 2px solid #ffd700;
+        }
+        
+        .instructions h3 {
+            margin: 0 0 15px 0;
+            color: #ffd700;
+            font-size: 16px;
+        }
+        
+        .instructions ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .status-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: #ffd700;
+            padding: 20px 30px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+            font-size: 16px;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .version-tag {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.9);
+            color: #ffd700;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid #ffd700;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .book-cover {
+                transform: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            .controls, .instructions, .version-tag {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Сначала загружаем html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <div class="version-tag">🌟 Версия без фильтра</div>
+    
+    <div class="status-message" id="statusMessage">Обрабатывается...</div>
+    
+    <div class="controls">
+        <h3>📸 Управление обложкой</h3>
+        <button onclick="downloadAsImage()" id="downloadBtn">
+            💾 Скачать как JPEG
+        </button>
+        <button onclick="downloadAsPNG()" id="downloadPngBtn">
+            🖼️ Скачать как PNG
+        </button>
+        <button onclick="printToPDF()" id="printBtn">
+            📄 Печать в PDF
+        </button>
+        <button onclick="toggleFullSize()" id="sizeBtn">
+            🔍 Полный размер
+        </button>
+        <button onclick="copyToClipboard()" id="copyBtn">
+            📋 Копировать изображение
+        </button>
+    </div>
+    
+    <div class="instructions">
+        <h3>Инструкции:</h3>
+        
+        <strong>📷 Добавить фото Марии:</strong>
+        <ul>
+            <li>Кликните на круглую область</li>
+            <li>Выберите фото (до 10МБ)</li>
+            <li>Фото будет в естественных цветах</li>
+        </ul>
+        
+        <strong>🌟 Особенности версии:</strong>
+        <ul>
+            <li>Фото без золотистого фильтра</li>
+            <li>Сохраняет естественные цвета</li>
+            <li>Четкое и яркое изображение</li>
+        </ul>
+        
+        <strong>💾 Экспорт для Amazon KDP:</strong>
+        <ul>
+            <li><strong>JPEG:</strong> Лучшее качество, меньший размер</li>
+            <li><strong>PNG:</strong> Максимальное качество</li>
+            <li><strong>PDF:</strong> Через печать браузера</li>
+        </ul>
+        
+        <strong>📐 Размеры:</strong><br>
+        Готово для KDP: 1000×1500px (6.67"×10") при 300 DPI
+    </div>
+
+    <div class="book-cover" id="bookCover">
+        <!-- Mystical background elements -->
+        <div class="mystical-symbols symbol-1">✧</div>
+        <div class="mystical-symbols symbol-2">✦</div>
+        <div class="mystical-symbols symbol-3">✧</div>
+        <div class="mystical-symbols symbol-4">✦</div>
+        
+        <div class="golden-accent"></div>
+        <div class="inner-glow"></div>
+        
+        <!-- Decorative borders -->
+        <div class="golden-frame"></div>
+        <div class="ornamental-border"></div>
+        
+        <!-- Title section -->
+        <div class="title-section">
+            <div class="main-title">30 DAYS<br>SACRED MONEY<br>BLESSINGS</div>
+            <div class="subtitle">Ancient Abundance Activation</div>
+            <div class="lineage-text">From 1500-Year Sacred Lineage</div>
+        </div>
+        
+        <!-- Maria's photo with upload functionality -->
+        <div class="maria-photo" id="mariaPhoto">
+            <div class="photo-placeholder">
+                📸 Кликните для<br>загрузки фото<br>Марии<br><small>(без фильтра)</small>
+            </div>
+        </div>
+        
+        <!-- Bottom section -->
+        <div class="bottom-section">
+            <div class="activation-text">Unlock Your Financial Flow</div>
+            <div class="author-name">with MARIA</div>
+        </div>
+    </div>
+
+    <script>
+        // Глобальные переменные
+        let isFullSize = false;
+        
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePhotoUpload();
+            console.log('html2canvas доступен:', typeof html2canvas !== 'undefined');
+        });
+        
+        // Загрузка фото
+        function initializePhotoUpload() {
+            const mariaPhoto = document.getElementById('mariaPhoto');
+            
+            mariaPhoto.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.style.display = 'none';
+                
+                input.addEventListener('change', function(event) {
+                    if (event.target.files[0]) {
+                        loadPhoto(event.target.files[0]);
+                    }
+                });
+                
+                document.body.appendChild(input);
+                input.click();
+                
+                setTimeout(() => {
+                    if (input.parentNode) {
+                        input.parentNode.removeChild(input);
+                    }
+                }, 1000);
+            });
+        }
+        
+        function loadPhoto(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Пожалуйста, выберите файл изображения');
+                return;
+            }
+            
+            if (file.size > 10 * 1024 * 1024) {
+                alert('Файл слишком большой. Максимум 10MB');
+                return;
+            }
+            
+            const reader = new FileReader();
+            const mariaPhoto = document.getElementById('mariaPhoto');
+            
+            reader.onload = function(e) {
+                mariaPhoto.style.backgroundImage = `url("${e.target.result}")`;
+                mariaPhoto.style.backgroundSize = 'cover';
+                mariaPhoto.style.backgroundPosition = 'center';
+                
+                mariaPhoto.innerHTML = `
+                    <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); color: #ffd700; padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid #ffd700; font-weight: bold;">
+                        ✓ Фото загружено (без фильтра)
+                    </div>
+                `;
+            };
+            
+            reader.onerror = function() {
+                alert('Ошибка при загрузке файла. Попробуйте другой файл.');
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        // Показать статус
+        function showStatus(message, duration = 3000) {
+            const status = document.getElementById('statusMessage');
+            status.textContent = message;
+            status.style.display = 'block';
+            
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, duration);
+        }
+        
+        // Подготовка к экспорту
+        function prepareForExport() {
+            const cover = document.getElementById('bookCover');
+            const controls = document.querySelector('.controls');
+            const instructions = document.querySelector('.instructions');
+            const versionTag = document.querySelector('.version-tag');
+            
+            // Временно скрываем элементы управления
+            controls.style.display = 'none';
+            instructions.style.display = 'none';
+            versionTag.style.display = 'none';
+            
+            // Делаем обложку полноразмерной
+            const wasFullSize = isFullSize;
+            if (!isFullSize) {
+                cover.style.transform = 'scale(1)';
+                isFullSize = true;
+            }
+            
+            return () => {
+                // Восстанавливаем элементы
+                controls.style.display = 'block';
+                instructions.style.display = 'block';
+                versionTag.style.display = 'block';
+                
+                if (!wasFullSize) {
+                    cover.style.transform = 'scale(0.4)';
+                    isFullSize = false;
+                }
+            };
+        }
+        
+        // Альтернативный метод скачивания через data URL
+        function forceDownload(dataUrl, filename) {
+            try {
+                // Метод 1: Прямая ссылка
+                const link = document.createElement('a');
+                link.href = dataUrl;
+                link.download = filename;
+                link.style.display = 'none';
+                
+                // Добавляем в DOM и кликаем
+                document.body.appendChild(link);
+                
+                // Принудительный клик через события
+                const clickEvent = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+                
+                link.dispatchEvent(clickEvent);
+                
+                // Убираем из DOM
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                }, 100);
+                
+                return true;
+            } catch (error) {
+                console.error('Ошибка принудительного скачивания:', error);
+                
+                // Метод 2: Открытие в новом окне
+                try {
+                    const newWindow = window.open();
+                    newWindow.document.write(`
+                        <html>
+                            <head><title>Скачать изображение</title></head>
+                            <body style="margin:0; text-align:center; background:#000;">
+                                <h2 style="color:white;">Кликните правой кнопкой и выберите "Сохранить изображение"</h2>
+                                <img src="${dataUrl}" style="max-width:100%; height:auto;" alt="Sacred Money Blessings Cover">
+                            </body>
+                        </html>
+                    `);
+                    newWindow.document.close();
+                    return true;
+                } catch (windowError) {
+                    console.error('Не удалось открыть новое окно:', windowError);
+                    return false;
+                }
+            }
+        }
+        
+        // Скачать как JPEG
+        async function downloadAsImage() {
+            const btn = document.getElementById('downloadBtn');
+            btn.disabled = true;
+            btn.textContent = 'Создается JPEG...';
+            
+            showStatus('Создается JPEG изображение...');
+            
+            try {
+                if (typeof html2canvas === 'undefined') {
+                    throw new Error('html2canvas не загружен');
+                }
+                
+                const restore = prepareForExport();
+                
+                // Даем время на применение стилей
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                const canvas = await html2canvas(document.getElementById('bookCover'), {
+                    width: 1000,
+                    height: 1500,
+                    scale: 1,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: '#0d0704',
+                    logging: true
+                });
+                
+                restore();
+                
+                // Конвертируем canvas в data URL
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                console.log('Data URL создан, длина:', dataUrl.length);
+                
+                // Попытка скачивания
+                const success = forceDownload(dataUrl, 'Sacred_Money_Blessings_Cover_Natural.jpg');
+                
+                if (success) {
+                    showStatus('✅ JPEG готов! Если скачивание не началось, проверьте новое окно.');
+                } else {
+                    showStatus('❌ Не удалось скачать. Попробуйте другой браузер.');
+                }
+                
+            } catch (error) {
+                console.error('Ошибка при создании JPEG:', error);
+                showStatus('❌ Ошибка: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '💾 Скачать как JPEG';
+            }
+        }
+        
+        // Скачать как PNG  
+        async function downloadAsPNG() {
+            const btn = document.getElementById('downloadPngBtn');
+            btn.disabled = true;
+            btn.textContent = 'Создается PNG...';
+            
+            showStatus('Создается PNG изображение...');
+            
+            try {
+                if (typeof html2canvas === 'undefined') {
+                    throw new Error('html2canvas не загружен');
+                }
+                
+                const restore = prepareForExport();
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                const canvas = await html2canvas(document.getElementById('bookCover'), {
+                    width: 1000,
+                    height: 1500,
+                    scale: 1,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: '#0d0704',
+                    logging: true
+                });
+                
+                restore();
+                
+                const dataUrl = canvas.toDataURL('image/png');
+                console.log('PNG Data URL создан, длина:', dataUrl.length);
+                
+                const success = forceDownload(dataUrl, 'Sacred_Money_Blessings_Cover_Natural.png');
+                
+                if (success) {
+                    showStatus('✅ PNG готов! Если скачивание не началось, проверьте новое окно.');
+                } else {
+                    showStatus('❌ Не удалось скачать. Попробуйте другой браузер.');
+                }
+                
+            } catch (error) {
+                console.error('Ошибка при создании PNG:', error);
+                showStatus('❌ Ошибка: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🖼️ Скачать как PNG';
+            }
+        }
+        
+        // Печать в PDF
+        function printToPDF() {
+            showStatus('Подготовка к печати...');
+            
+            const restore = prepareForExport();
+            
+            // Настройки печати через CSS
+            const printStyle = document.createElement('style');
+            printStyle.textContent = `
+                @media print {
+                    @page {
+                        size: 6.67in 10in;
+                        margin: 0;
+                    }
+                    body * {
+                        visibility: hidden;
+                    }
+                    .book-cover, .book-cover * {
+                        visibility: visible;
+                    }
+                    .book-cover {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        transform: none !important;
+                        width: 6.67in !important;
+                        height: 10in !important;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyle);
+            
+            setTimeout(() => {
+                window.print();
+                restore();
+                document.head.removeChild(printStyle);
+                showStatus('Диалог печати открыт');
+            }, 500);
+        }
+        
+        // Копировать в буфер (упрощенная версия)
+        async function copyToClipboard() {
+            showStatus('⚠️ Функция копирования ограничена в этой среде. Используйте скачивание.');
+        }
+        
+        // Переключить размер
+        function toggleFullSize() {
+            const cover = document.getElementById('bookCover');
+            const btn = document.getElementById('sizeBtn');
+            
+            if (isFullSize) {
+                cover.style.transform = 'scale(0.4)';
+                btn.textContent = '🔍 Полный размер';
+                isFullSize = false;
+            } else {
+                cover.style.transform = 'scale(1)';
+                btn.textContent = '🔍 Уменьшить';
+                isFullSize = true;
+            }
+        }
+        
+        // Обработка печати
+        window.addEventListener('beforeprint', function() {
+            const cover = document.getElementById('bookCover');
+            cover.style.transform = 'scale(1)';
+            document.querySelector('.controls').style.display = 'none';
+            document.querySelector('.instructions').style.display = 'none';
+            document.querySelector('.version-tag').style.display = 'none';
+        });
+        
+        window.addEventListener('afterprint', function() {
+            if (!isFullSize) {
+                document.getElementById('bookCover').style.transform = 'scale(0.4)';
+            }
+            document.querySelector('.controls').style.display = 'block';
+            document.querySelector('.instructions').style.display = 'block';
+            document.querySelector('.version-tag').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
