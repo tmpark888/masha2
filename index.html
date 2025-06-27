@@ -112,13 +112,25 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 20;
-            /* Убираем золотистый фильтр - фото остается в естественных цветах */
+            /* КРИТИЧНО: Полностью отключаем все фильтры */
             filter: none !important;
+            -webkit-filter: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        
+        /* Убираем любые псевдо-элементы которые могут влиять на цвет */
+        .maria-photo::before,
+        .maria-photo::after {
+            display: none !important;
         }
         
         .maria-photo:hover {
             transform: translateX(-50%) scale(1.02);
             box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+            /* Убираем фильтры и при hover */
+            filter: none !important;
+            -webkit-filter: none !important;
         }
         
         .photo-placeholder {
@@ -315,6 +327,20 @@
             z-index: 1000;
         }
         
+        /* Убираем все возможные наложения цвета во всех браузерах */
+        .maria-photo * {
+            filter: none !important;
+            -webkit-filter: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            mix-blend-mode: normal !important;
+        }
+        
+        /* Убираем overlay эффекты */
+        .maria-photo:not(.photo-placeholder)::before {
+            display: none !important;
+        }
+        
         @media print {
             body {
                 background: white !important;
@@ -329,6 +355,11 @@
                 page-break-inside: avoid;
             }
             
+            .maria-photo {
+                filter: none !important;
+                -webkit-filter: none !important;
+            }
+            
             .controls, .instructions, .version-tag {
                 display: none !important;
             }
@@ -339,7 +370,7 @@
     <!-- Сначала загружаем html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
-    <div class="version-tag">🌟 Версия без фильтра</div>
+    <div class="version-tag">🌟 Оригинальные цвета фото</div>
     
     <div class="status-message" id="statusMessage">Обрабатывается...</div>
     
@@ -369,14 +400,14 @@
         <ul>
             <li>Кликните на круглую область</li>
             <li>Выберите фото (до 10МБ)</li>
-            <li>Фото будет в естественных цветах</li>
+            <li>Фото сохранит оригинальные цвета</li>
         </ul>
         
         <strong>🌟 Особенности версии:</strong>
         <ul>
-            <li>Фото без золотистого фильтра</li>
-            <li>Сохраняет естественные цвета</li>
-            <li>Четкое и яркое изображение</li>
+            <li>100% оригинальные цвета фото</li>
+            <li>Без золотистых или других фильтров</li>
+            <li>Естественное и четкое изображение</li>
         </ul>
         
         <strong>💾 Экспорт для Amazon KDP:</strong>
@@ -414,7 +445,7 @@
         <!-- Maria's photo with upload functionality -->
         <div class="maria-photo" id="mariaPhoto">
             <div class="photo-placeholder">
-                📸 Кликните для<br>загрузки фото<br>Марии<br><small>(без фильтра)</small>
+                📸 Кликните для<br>загрузки фото<br>Марии<br><small>(оригинальные цвета)</small>
             </div>
         </div>
         
@@ -480,15 +511,34 @@
             const mariaPhoto = document.getElementById('mariaPhoto');
             
             reader.onload = function(e) {
+                // Полностью очищаем все стили которые могут влиять на цвет
                 mariaPhoto.style.backgroundImage = `url("${e.target.result}")`;
                 mariaPhoto.style.backgroundSize = 'cover';
                 mariaPhoto.style.backgroundPosition = 'center';
+                mariaPhoto.style.filter = 'none';
+                mariaPhoto.style.webkitFilter = 'none';
+                mariaPhoto.style.backdropFilter = 'none';
+                mariaPhoto.style.webkitBackdropFilter = 'none';
+                mariaPhoto.style.mixBlendMode = 'normal';
+                
+                // Добавляем класс для гарантии что фильтры отключены
+                mariaPhoto.classList.add('photo-loaded');
                 
                 mariaPhoto.innerHTML = `
                     <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); color: #ffd700; padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid #ffd700; font-weight: bold;">
-                        ✓ Фото загружено (без фильтра)
+                        ✓ Оригинальные цвета
                     </div>
                 `;
+                
+                // Дополнительно убираем все возможные фильтры через JavaScript
+                setTimeout(() => {
+                    const computedStyle = window.getComputedStyle(mariaPhoto);
+                    console.log('Фильтры после загрузки:', computedStyle.filter);
+                    
+                    // Принудительно убираем любые остаточные эффекты
+                    mariaPhoto.style.setProperty('filter', 'none', 'important');
+                    mariaPhoto.style.setProperty('-webkit-filter', 'none', 'important');
+                }, 100);
             };
             
             reader.onerror = function() {
@@ -497,6 +547,20 @@
             
             reader.readAsDataURL(file);
         }
+        
+        // Добавляем CSS правило для загруженных фото
+        const style = document.createElement('style');
+        style.textContent = `
+            .maria-photo.photo-loaded,
+            .maria-photo.photo-loaded * {
+                filter: none !important;
+                -webkit-filter: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                mix-blend-mode: normal !important;
+            }
+        `;
+        document.head.appendChild(style);
         
         // Показать статус
         function showStatus(message, duration = 3000) {
@@ -515,11 +579,18 @@
             const controls = document.querySelector('.controls');
             const instructions = document.querySelector('.instructions');
             const versionTag = document.querySelector('.version-tag');
+            const mariaPhoto = document.getElementById('mariaPhoto');
             
             // Временно скрываем элементы управления
             controls.style.display = 'none';
             instructions.style.display = 'none';
             versionTag.style.display = 'none';
+            
+            // Гарантируем что фото остается без фильтров
+            if (mariaPhoto.style.backgroundImage) {
+                mariaPhoto.style.setProperty('filter', 'none', 'important');
+                mariaPhoto.style.setProperty('-webkit-filter', 'none', 'important');
+            }
             
             // Делаем обложку полноразмерной
             const wasFullSize = isFullSize;
@@ -721,6 +792,10 @@
                         width: 6.67in !important;
                         height: 10in !important;
                     }
+                    .maria-photo {
+                        filter: none !important;
+                        -webkit-filter: none !important;
+                    }
                 }
             `;
             document.head.appendChild(printStyle);
@@ -755,22 +830,4 @@
         }
         
         // Обработка печати
-        window.addEventListener('beforeprint', function() {
-            const cover = document.getElementById('bookCover');
-            cover.style.transform = 'scale(1)';
-            document.querySelector('.controls').style.display = 'none';
-            document.querySelector('.instructions').style.display = 'none';
-            document.querySelector('.version-tag').style.display = 'none';
-        });
-        
-        window.addEventListener('afterprint', function() {
-            if (!isFullSize) {
-                document.getElementById('bookCover').style.transform = 'scale(0.4)';
-            }
-            document.querySelector('.controls').style.display = 'block';
-            document.querySelector('.instructions').style.display = 'block';
-            document.querySelector('.version-tag').style.display = 'block';
-        });
-    </script>
-</body>
-</html>
+        window
