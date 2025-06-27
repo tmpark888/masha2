@@ -482,15 +482,38 @@
             const mariaPhoto = document.getElementById('mariaPhoto');
             
             reader.onload = function(e) {
-                mariaPhoto.style.backgroundImage = `url("${e.target.result}")`;
-                mariaPhoto.style.backgroundSize = 'cover';
-                mariaPhoto.style.backgroundPosition = 'center';
-                
-                mariaPhoto.innerHTML = `
-                    <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); color: #ffd700; padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid #ffd700; font-weight: bold;">
-                        ✓ Фото загружено
-                    </div>
-                `;
+    mariaPhoto.style.backgroundImage = `url("${e.target.result}")`;
+    mariaPhoto.style.backgroundSize = 'cover';
+    mariaPhoto.style.backgroundPosition = 'center';
+    
+    // ВАЖНО: Принудительно убираем все фильтры и эффекты
+    mariaPhoto.style.filter = 'none !important';
+    mariaPhoto.style.backdropFilter = 'none !important';
+    mariaPhoto.style.mixBlendMode = 'normal !important';
+    mariaPhoto.style.opacity = '1 !important';
+    mariaPhoto.style.isolation = 'isolate';
+    
+    // Создаем внутренний контейнер для фото без наследования стилей
+    mariaPhoto.innerHTML = `
+        <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: url('${e.target.result}');
+            background-size: cover;
+            background-position: center;
+            filter: none !important;
+            mix-blend-mode: normal !important;
+            isolation: isolate;
+            z-index: 10;
+        "></div>
+        <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.8); color: #ffd700; padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid #ffd700; font-weight: bold; z-index: 20;">
+            ✓ Фото загружено
+        </div>
+        `;
             };
             
             reader.onerror = function() {
